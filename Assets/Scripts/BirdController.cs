@@ -29,6 +29,12 @@ public class BirdController : MonoBehaviour
     public void Die()
     {
         isAlive = false;
-        // later you'll notify GameManager
+        Debug.Log("you died");
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Die();
+        // TODO: tell GameManager
     }
 }
