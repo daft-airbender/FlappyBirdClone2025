@@ -11,6 +11,7 @@ public class ScoreZone : MonoBehaviour
         {
             scored = true;
             Debug.Log("+1 to score");
+            GameManager.Instance.AddScore(1);
         }
     }
 }
