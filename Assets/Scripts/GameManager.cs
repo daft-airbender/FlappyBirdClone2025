@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -22,23 +21,34 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
+    void Start()
+    {
+        if (scoreText != null)
+            scoreText.text = score.ToString();
+
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(false);   // hide at start
+    }
+
     public void AddScore(int amount)
     {
         if (isGameOver) return;
 
         score += amount;
-        
         if (scoreText != null)
-        {
             scoreText.text = score.ToString();
-        }
     }
 
     public void GameOver()
     {
+        if (isGameOver) return;
+
         isGameOver = true;
-        gameOverPanel.SetActive(true);
-        Time.timeScale = 0f; // pause the game
+
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(true);
+
+        Time.timeScale = 0f;                 // pause game
     }
 
     public void Restart()

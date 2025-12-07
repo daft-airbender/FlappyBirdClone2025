@@ -29,12 +29,11 @@ public class BirdController : MonoBehaviour
     public void Die()
     {
         isAlive = false;
-        Debug.Log("you died");
+        GameManager.Instance.GameOver();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         Die();
-        // TODO: tell GameManager
     }
 }
